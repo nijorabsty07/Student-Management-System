@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        a {
+            display: block;
+            margin: 15px 0;
+            padding: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .add {
+            background: #27ae60;
+        }
+
+        .update {
+            background: #f39c12;
+        }
+
+        a:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1>Student Management System</h1>
+
+    <a href="{{ url_for('add') }}" class="add">Add Student</a>
+    <a href="{{ url_for('update') }}" class="update">Update Student</a>
+</div>
+</body>
+</html>

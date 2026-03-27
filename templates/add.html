@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 520px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 5px rgba(102,126,234,0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+            opacity: 0.9;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 25px;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #2c3e50;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f8f9ff;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Add Student</h2>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Enter Name" required>
+        <input type="text" name="roll" placeholder="Enter Roll No" required>
+        <input type="number" name="marks" placeholder="Enter Marks" required>
+        <button type="submit">Add Student</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Roll</th>
+            <th>Marks</th>
+        </tr>
+
+        {% for s in students %}
+        <tr>
+            <td>{{ s[1] }}</td>  <!-- name -->
+            <td>{{ s[2] }}</td>  <!-- roll -->
+            <td>{{ s[3] }}</td>  <!-- marks -->
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{{ url_for('dashboard') }}" class="back">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>
