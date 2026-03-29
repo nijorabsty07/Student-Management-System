@@ -3,7 +3,6 @@ import sqlite3
 
 app = Flask(__name__)
 
-# Create DB + Table (only once)
 def init_db():
     conn = sqlite3.connect('students.db')
     cur = conn.cursor()
@@ -21,13 +20,11 @@ def init_db():
 init_db()
 
 
-# Dashboard
 @app.route('/')
 def dashboard():
     return render_template('dashboard.html')
 
 
-# Add Student
 @app.route('/add', methods=['GET', 'POST'])
 def add():
     conn = sqlite3.connect('students.db')
@@ -43,7 +40,7 @@ def add():
                         (name, roll, marks))
             conn.commit()
         except:
-            pass  # ignore duplicate roll
+            pass  
 
         return redirect(url_for('add'))
 
@@ -53,7 +50,6 @@ def add():
     return render_template('add.html', students=students)
 
 
-# Update Student
 @app.route('/update', methods=['GET', 'POST'])
 def update():
     conn = sqlite3.connect('students.db')
@@ -76,7 +72,6 @@ def update():
     return render_template('update.html', students=students)
 
 
-# Delete Student
 @app.route('/delete/<roll>')
 def delete(roll):
     conn = sqlite3.connect('students.db')
